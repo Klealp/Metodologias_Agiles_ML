@@ -2,57 +2,71 @@
 
 ## Nombre del Proyecto
 
-[Nombre del proyecto aquí]
+Clasificación Automática de Residuos en Vertederos mediante Fine-Tuning de InceptionV3
 
 ## Objetivo del Proyecto
 
-[Descripción breve del objetivo del proyecto y por qué es importante]
+El objetivo principal del proyecto es desarrollar un sistema de clasificación de imágenes de residuos sólidos mediante la técnica de **fine-tuning** sobre la arquitectura **InceptionV3** pre-entrenada en ImageNet, aplicado al conjunto de datos **RealWaste** (Single et al., 2023). El sistema clasificará imágenes capturadas en condiciones reales de vertedero en 9 categorías de residuos, con el fin de optimizar los procesos de separación y reciclaje en instalaciones de gestión de residuos sólidos urbanos, reduciendo la intervención manual y los riesgos para los trabajadores.
 
 ## Alcance del Proyecto
 
 ### Incluye:
 
-- [Descripción de los datos disponibles]
-- [Descripción de los resultados esperados]
-- [Criterios de éxito del proyecto]
+- El proyecto utiliza el conjunto de datos **RealWaste**, disponible en Kaggle ([joebeachcapital/realwaste](https://www.kaggle.com/datasets/joebeachcapital/realwaste/data)), compuesto por **4.752 imágenes JPG** (524 × 524 píxeles) capturadas en la instalación Shoalhaven Waste Management Facility en Nowra, Australia. Las imágenes están distribuidas en 9 clases: *Cardboard* (461), *Food Organics* (411), *Glass* (420), *Metal* (790), *Miscellaneous Trash* (495), *Paper* (500), *Plastic* (921), *Textile Trash* (318) y *Vegetation* (436).
+- Al finalizar el proyecto se espera obtener un modelo de deep learning basado en **fine-tuning de InceptionV3** capaz de clasificar residuos con alta precisión. Los entregables incluyen: el modelo entrenado y guardado, un informe con métricas de rendimiento (exactitud global, precisión, recall, F1-score y matriz de confusión por clase) y un modelo desplegado que permita la clasificación automática de residuos en tiempo real usando la cámara de un dispositivo móvil.
+- El proyecto se considerará exitoso si el modelo alcanza una **exactitud global superior al 85 %** en el conjunto de prueba y un **F1-score promedio ponderado mayor a 0,83**.
 
 ### Excluye:
 
-- [Descripción de lo que no está incluido en el proyecto]
+- El proyecto no contempla el entrenamiento de una arquitectura CNN desde cero. El enfoque es exclusivamente de transfer learning mediante fine-tuning de InceptionV3. Tampoco se incluye la clasificación de categorías de residuos fuera de las 9 clases definidas en RealWaste.
 
 ## Metodología
 
-[Descripción breve de la metodología que se utilizará para llevar a cabo el proyecto]
+La metodología seguirá el marco **CRISP-DM** de forma iterativa. En la fase de *entendimiento del negocio* se definen los objetivos y el alcance del proyecto. En la fase de *entendimiento de los datos* se realizará un Análisis Exploratorio de Datos (EDA) exhaustivo: distribución de clases, análisis de dimensiones y visualización de muestras representativas. La fase de *preparación de datos* contemplará el preprocesamiento de imágenes —redimensionamiento a 299 × 299 px (entrada requerida por InceptionV3), normalización y data augmentation (rotaciones, volteos, zoom)—. El *modelado* aplicará **Transfer Learning** mediante fine-tuning de **InceptionV3** pre-entrenada en ImageNet: primero se entrenarán únicamente las capas añadidas con la base congelada y, posteriormente, se descongelarán gradualmente las capas superiores para adaptar los pesos al dominio de clasificación de residuos, siguiendo el enfoque de Single et al. (2023). Finalmente, el modelo será *evaluado* con métricas estándar de clasificación multiclase sobre un conjunto de prueba independiente.
 
 ## Cronograma
 
 | Etapa | Duración Estimada | Fechas |
 |------|---------|-------|
-| Entendimiento del negocio y carga de datos | 2 semanas | del 1 de mayo al 15 de mayo |
-| Preprocesamiento, análisis exploratorio | 4 semanas | del 16 de mayo al 15 de junio |
-| Modelamiento y extracción de características | 4 semanas | del 16 de junio al 15 de julio |
-| Despliegue | 2 semanas | del 16 de julio al 31 de julio |
-| Evaluación y entrega final | 3 semanas | del 1 de agosto al 21 de agosto |
-
-Hay que tener en cuenta que estas fechas son de ejemplo, estas deben ajustarse de acuerdo al proyecto.
+| Entendimiento del negocio y carga de datos | 1 semana | lun 4 – dom 10 de mayo del 2026 |
+| Preprocesamiento, análisis exploratorio | 1 semana | lun 11 – dom 17 de mayo del 2026 |
+| Modelamiento y fine-tuning de InceptionV3 | 1 semana | lun 18 – dom 24 de mayo del 2026 |
+| Despliegue | 1 semana | lun 25 – dom 31 de mayo del 2026 |
+| Evaluación y entrega final | 1 semana | lun 1 – dom 7 de junio del 2026 |
 
 ## Equipo del Proyecto
 
-- [Nombre y cargo del líder del proyecto]
-- [Nombre y cargo de los miembros del equipo]
+- **Científico de Datos:** Kevin Andres Leal Perez
+- **Científico de Datos:** Dairo Enrique Morales Jimenez
+- **Científico de Datos:** Sergio Andres Sierra Garcia
 
 ## Presupuesto
 
-[Descripción del presupuesto asignado al proyecto]
+| Categoría de Gasto | Descripción | Costo Estimado (USD) | Notas / Consideraciones |
+| :----------------- | :---------- | :------------------- | :---------------------- |
+| **I. Personal** | | | |
+| Científico de Datos (Kevin Leal) | Diseño del esquema de fine-tuning, optimización de hiperparámetros y análisis de resultados. | $5,000 | 1.5 meses a tiempo parcial |
+| Científico de Datos (Dairo Morales) | Implementación de código, experimentos y preprocesamiento de imágenes. | $4,000 | 2 meses a tiempo completo |
+| Científico de Datos (Sergio Sierra) | EDA, evaluación del modelo y documentación técnica. | $4,000 | 2 meses a tiempo completo |
+| **II. Infraestructura y Software** | | | |
+| Plataforma Cloud (GPU) | Google Colab Pro / AWS EC2 GPU para entrenamiento del modelo. | $800 | ~120 horas de GPU |
+| Almacenamiento Cloud | GCS/S3 para el dataset y checkpoints del modelo. | $30 | ~50 GB por 2 meses |
+| Licencias de Software | Python, TensorFlow/Keras, scikit-learn (open-source). | $0 | Sin costo de licencias. |
+| **III. Misceláneos** | | | |
+| Investigación y Desarrollo | Lectura del artículo de referencia y pruebas de concepto del fine-tuning. | $500 | Exploración de la arquitectura InceptionV3. |
+| Gestión de Proyecto | Coordinación, reuniones y documentación. | $300 | Porcentaje del tiempo del equipo. |
+| Contingencias | Fondo para imprevistos (~10 % del total estimado). | $1,433 | Buffer para gastos inesperados. |
+| **TOTAL ESTIMADO DEL PROYECTO** | | **$15,763** | |
 
 ## Stakeholders
 
-- [Nombre y cargo de los stakeholders del proyecto]
-- [Descripción de la relación con los stakeholders]
-- [Expectativas de los stakeholders]
+- Los stakeholders clave son las **plantas de recuperación de materiales (MRF)**, empresas de gestión de residuos sólidos urbanos y organismos gubernamentales de medio ambiente interesados en la automatización de la clasificación de residuos a escala industrial.
+- Los expertos en gestión ambiental e ingeniería de residuos actúan como validadores del conocimiento de dominio, asegurando que las categorías de clasificación sean relevantes para los procesos reales de separación y reciclaje.
+- Las expectativas de los stakeholders se centran en obtener un modelo funcional y preciso que automatice la identificación de los 9 tipos de residuos del dataset RealWaste, reduciendo la dependencia de la clasificación manual y los riesgos de exposición a materiales peligrosos.
 
 ## Aprobaciones
 
-- [Nombre y cargo del aprobador del proyecto]
-- [Firma del aprobador]
-- [Fecha de aprobación]
+- **Kevin Andres Leal Perez** — Científico de Datos
+- **Dairo Enrique Morales Jimenez** — Científico de Datos
+- **Sergio Andres Sierra Garcia** — Científico de Datos
+- Fecha de aprobación: 9 de mayo de 2026
