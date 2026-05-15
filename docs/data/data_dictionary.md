@@ -2,7 +2,7 @@
 
 ## Base de datos
 
-Dataset **RealWaste** obtenido de Kaggle (joebeachcapital/realwaste). Contiene 4.752 imágenes JPG capturadas en la instalación Shoalhaven Waste Management Facility (Nowra, Australia) en condiciones reales de vertedero. Las imágenes están organizadas en subdirectorios, donde el nombre del directorio corresponde a la etiqueta de clase. Referencia: Single et al. (2023). DOI: 10.3390/a16060299.
+Dataset **RealWaste** obtenido de Kaggle (joebeachcapital/realwaste). Contiene 4.752 imágenes JPG capturadas en la instalación Whyte’s Gully Waste and Resource Recovery Centre’s landfill site located in Wollongong, New South Wales, Australia, en condiciones reales de vertedero. Las imágenes están organizadas en subdirectorios, donde el nombre del directorio corresponde a la etiqueta de clase. Referencia: Single et al. (2023). https://doi.org/10.3390/info14120633
 
 | Variable | Descripción | Tipo de dato | Rango/Valores posibles | Fuente de datos |
 | --- | --- | --- | --- | --- |
@@ -17,9 +17,4 @@ Dataset **RealWaste** obtenido de Kaggle (joebeachcapital/realwaste). Contiene 4
 | Textile Trash | Imágenes de residuos textiles | numpy array | (524, 524, 3) — valores de píxel en [0, 255] | Directorio `joebeachcapital/realwaste/realwaste-main/RealWaste/Textile Trash/` — 318 imágenes |
 | Vegetation | Imágenes de residuos de vegetación | numpy array | (524, 524, 3) — valores de píxel en [0, 255] | Directorio `joebeachcapital/realwaste/realwaste-main/RealWaste/Vegetation/` — 436 imágenes |
 
-- **Variable**: nombre de la variable o clase del dataset.
-- **Descripción**: breve descripción del contenido de la variable o categoría.
-- **Tipo de dato**: tipo de dato que contiene la variable.
-- **Rango/Valores posibles**: forma del array o conjunto de valores posibles para la variable.
-- **Fuente de datos**: ruta o directorio de origen dentro del dataset descargado.
 
