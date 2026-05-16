@@ -2,24 +2,59 @@
 
 ## Origen de los datos
 
-- [ ] Especificar la fuente de los datos y la forma en que se obtuvieron. 
+Los datos provienen del dataset **RealWaste**, disponible públicamente en Kaggle bajo el identificador [`joebeachcapital/realwaste`](https://www.kaggle.com/datasets/joebeachcapital/realwaste). El dataset fue recolectado con el propósito de representar condiciones reales de clasificación de residuos en vertederos, capturando imágenes desde un ángulo superior sobre distintas superficies con variabilidad de iluminación y tamaño de los objetos.
+
+La descarga se realiza de forma automatizada mediante la biblioteca `kagglehub`, que gestiona la autenticación con Kaggle y el almacenamiento en caché local.
 
 ## Especificación de los scripts para la carga de datos
 
-- [ ] Especificar los scripts utilizados para la carga de los datos. 
+| Script | Propósito |
+|---|---|
+| `scripts/eda/M5U3_2_exploratory_data_analysis.ipynb` | Carga del dataset, construcción del DataFrame con rutas e etiquetas, análisis exploratorio |
+| `scripts/preprocessing/M5U3_2_data_preprocessing.ipynb` | Preparación y limpieza: rebalanceo de clases mediante *data augmentation* |
+
+La carga se realiza con el siguiente flujo:
+
+```python
+import kagglehub
+path = kagglehub.dataset_download("joebeachcapital/realwaste")
+path = os.path.join(path, 'realwaste-main', 'RealWaste')
+```
+
+A partir de las carpetas por clase se construye un DataFrame con columnas `image_path` y `label`.
 
 ## Referencias a rutas o bases de datos origen y destino
 
-- [ ] Especificar las rutas o bases de datos de origen y destino para los datos.
-
 ### Rutas de origen de datos
 
-- [ ] Especificar la ubicación de los archivos de origen de los datos.
-- [ ] Especificar la estructura de los archivos de origen de los datos.
-- [ ] Describir los procedimientos de transformación y limpieza de los datos.
+- **Ruta de descarga automática (caché local):**
+  ```
+  C:\Users\<usuario>\.cache\kagglehub\datasets\joebeachcapital\realwaste\versions\1\realwaste-main\RealWaste\
+  ```
+
+- **Estructura de directorios:**
+  ```
+  RealWaste/
+  ├── Cardboard/          (imágenes .jpg)
+  ├── Food Organics/      (imágenes .jpg)
+  ├── Glass/              (imágenes .jpg)
+  ├── Metal/              (imágenes .jpg)
+  ├── Miscellaneous Trash/ (imágenes .jpg)
+  ├── Paper/              (imágenes .jpg)
+  ├── Plastic/            (imágenes .jpg)
+  ├── Textile Trash/      (imágenes .jpg)
+  └── Vegetation/         (imágenes .jpg)
+  ```
+
+- **Formato de archivos:** JPEG (`.jpg`), resolución uniforme de **524 × 524 píxeles**, 3 canales RGB.
+- **Tamaño total:** 656.42 MB.
+- **Convención de nombres de archivo:** `<Clase>_<número>.jpg` (ej. `Cardboard_1.jpg`).
+
+- **Procedimientos de transformación y limpieza:**
+  - Verificación de integridad: archivos ilegibles, imágenes vacías o constantes.
+  - Rebalanceo de clases minoritarias (< 700 imágenes) mediante *data augmentation* con transformaciones aleatorias (brillo, contraste, rotación, traslación, zoom, flip, ruido gaussiano, entre otras).
+  - Las imágenes aumentadas se identifican con el prefijo `augmented_<n>_` en su nombre y se integran al DataFrame `df_augmented`.
 
 ### Base de datos de destino
 
-- [ ] Especificar la base de datos de destino para los datos.
-- [ ] Especificar la estructura de la base de datos de destino.
-- [ ] Describir los procedimientos de carga y transformación de los datos en la base de datos de destino.
+El proyecto no emplea una base de datos relacional como destino. Los datos procesados se mantienen en memoria (DataFrame de pandas `df_augmented`) durante la ejecución del pipeline. Las imágenes originales permanecen en el directorio de caché de `kagglehub`; las imágenes aumentadas se generan en memoria durante el entrenamiento y no se persisten en disco en esta fase.
