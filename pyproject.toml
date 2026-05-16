@@ -3,14 +3,18 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nombre_paquete"
+name = "metodologias-agiles-ml"
 version = "0.1.0"
-authors = [{name = "autor1", email = "correo@correo.com"}]
-description = "Descripción del proyecto"
+authors = [
+    {name = "Kevin Andres Leal Perez"},
+    {name = "Dairo Enrique Morales Jimenez"},
+    {name = "Sergio Andres Sierra Garcia"},
+]
+description = "Proyecto de clasificación de residuos con ML - Universidad Nacional de Colombia"
 requires-python = ">3.8"
 dependencies = [
     "numpy"
 ]
 
 [tool.setuptools.packages.find]
-where = ["src/"]
+where = ["."]
