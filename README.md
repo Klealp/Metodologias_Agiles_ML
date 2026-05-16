@@ -21,6 +21,10 @@ from scripts.data_acquisition.main import load_dataset
 from scripts.preprocessing.main import preprocess_dataset
 ```
 
+## Login NAS
+
+net use Z: "\\192.168.0.12\data-metodologias" /user:"usuario" "contraseña" /persistent:yes
+
 ## Módulos
 
 | Módulo | Función | Descripción |

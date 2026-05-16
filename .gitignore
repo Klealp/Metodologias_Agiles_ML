@@ -5,3 +5,4 @@ credentials*
 **/build/*
 metodologias_agiles_ml.egg-info
 data/
+/data
