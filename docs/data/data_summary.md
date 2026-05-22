@@ -6,14 +6,15 @@ Este documento contiene los resultados del análisis exploratorio de datos del d
 
 | Característica | Valor |
 |---|---|
-| Total de imágenes | 4 752 |
+| Total de imágenes | 4 752 (originales) + 1 859 (aumentadas) = 6 611 |
 | Número de clases | 9 |
 | Formato de imágenes | JPEG (`.jpg`) |
-| Resolución | 524 × 524 píxeles |
+| Resolución original | 524 × 524 píxeles |
+| Resolución para entrenamiento (InceptionV3) | **299 × 299 píxeles** |
 | Canales de color | 3 (RGB) |
 | Tamaño total del dataset | 656.42 MB |
 
-Todas las imágenes presentan el **mismo formato y dimensiones**, lo que elimina la necesidad de redimensionamiento previo al entrenamiento. El dataset fue descargado automáticamente desde Kaggle mediante `kagglehub` y estructurado en un DataFrame con columnas `image_path` y `label`.
+Todas las imágenes originales presentan el **mismo formato y dimensiones** (524×524 px). Para el entrenamiento con **InceptionV3**, la totalidad del dataset aumentado es redimensionada a **299×299 píxeles** mediante interpolación Lanczos y almacenada en `realwaste_299/`. El dataset fue descargado automáticamente desde Kaggle mediante `kagglehub` y estructurado en un DataFrame con columnas `image_path` y `label`.
 
 **Clases disponibles:**
 Cardboard, Food Organics, Glass, Metal, Miscellaneous Trash, Paper, Plastic, Textile Trash, Vegetation.
@@ -76,21 +77,13 @@ El dataset de imágenes contiene dos metavariables tabulares:
 | `image_path` | String (ruta de archivo) | Ruta absoluta a la imagen `.jpg` en disco |
 | `label` | String categórico | Clase de residuo (una de las 9 categorías) |
 
-Las imágenes en sí son tensores de forma `(524, 524, 3)` con valores de píxel en el rango [0, 255] (uint8). Para el entrenamiento se normalizan al rango [0, 1].
+Las imágenes en sí son tensores de forma `(524, 524, 3)` (originales) o `(299, 299, 3)` (redimensionadas para InceptionV3) con valores de píxel en el rango [0, 255] (uint8). Para el entrenamiento se normalizan al rango [0, 1].
 
 **Observaciones visuales relevantes:**
-- Los residuos pueden aparecer sobre distintas superficies con colores similares.
 - La iluminación es variable entre imágenes.
 - Las fotos están tomadas desde un ángulo superior al objeto.
 - El tamaño de los residuos es variable tanto entre categorías como dentro de ellas.
 - Estas características son inherentes al contexto real de recolección en vertederos.
-
-## Ranking de variables
-
-Dado que el dataset es de imágenes (variables no tabulares), el ranking de importancia de características se realizará a nivel de píxeles/canales durante la etapa de modelado (p. ej., mediante mapas de activación o técnicas de interpretabilidad como Grad-CAM). No obstante, a nivel de metadatos:
-
-- La variable `label` es la única variable predictora estructurada disponible para análisis estadístico clásico.
-- La distribución de clases es el factor más relevante para el diseño del pipeline de entrenamiento, dado el desbalance identificado.
 
 ## Relación entre variables explicativas y variable objetivo
 
