@@ -1,0 +1,4 @@
+[core]
+    remote = mynas
+['remote "mynas"']
+    url = Z:\dvc-storage
