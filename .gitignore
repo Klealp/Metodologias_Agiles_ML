@@ -8,3 +8,6 @@ data/
 /data
 /realwaste
 realwaste
+realwaste/*
+realwaste_mod
+realwaste_mod/*

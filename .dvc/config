@@ -1,4 +1,4 @@
 [core]
     remote = mynas
 ['remote "mynas"']
-    url = Z:\dvc-storage
+    url = Z:\data-storage

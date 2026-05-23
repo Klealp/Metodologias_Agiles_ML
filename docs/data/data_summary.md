@@ -5,16 +5,17 @@ Este documento contiene los resultados del análisis exploratorio de datos del d
 ## Resumen general de los datos
 
 | Característica | Valor |
-|---|---|
-| Total de imágenes | 4 752 (originales) + 1 859 (aumentadas) = 6 611 |
+|---|---|+
+| Total de imágenes | 4 752 |
 | Número de clases | 9 |
 | Formato de imágenes | JPEG (`.jpg`) |
 | Resolución original | 524 × 524 píxeles |
 | Resolución para entrenamiento (InceptionV3) | **299 × 299 píxeles** |
 | Canales de color | 3 (RGB) |
-| Tamaño total del dataset | 656.42 MB |
+| Tamaño total del dataset original | 656.42 MB |
+| Tamaño total del dataset redimensionado | 200.89 MB |
 
-Todas las imágenes originales presentan el **mismo formato y dimensiones** (524×524 px). Para el entrenamiento con **InceptionV3**, la totalidad del dataset aumentado es redimensionada a **299×299 píxeles** mediante interpolación Lanczos y almacenada en `realwaste_299/`. El dataset fue descargado automáticamente desde Kaggle mediante `kagglehub` y estructurado en un DataFrame con columnas `image_path` y `label`.
+Todas las imágenes originales presentan el **mismo formato y dimensiones** (524×524 px). Para el entrenamiento con **InceptionV3**, la totalidad del dataset aumentado es redimensionada a **299×299 píxeles** mediante interpolación Lanczos y almacenada en `realwaste_mod/`. El dataset fue descargado automáticamente desde Kaggle mediante `kagglehub` y estructurado en un DataFrame con columnas `image_path` y `label`.
 
 **Clases disponibles:**
 Cardboard, Food Organics, Glass, Metal, Miscellaneous Trash, Paper, Plastic, Textile Trash, Vegetation.
@@ -52,25 +53,11 @@ El dataset se encuentra en **excelente estado de calidad**: no presenta valores 
 | Food Organics | < 700 |
 | Textile Trash | < 700 (menor frecuencia) |
 
-Existe un **desbalance de clases moderado**: Plastic y Metal superan las 700 imágenes, mientras que Textile Trash es la clase con menor representación. Se aplicó *data augmentation* dirigido para llevar las clases deficitarias a ~700 imágenes, generando 1 859 imágenes adicionales.
-
-**Distribución de probabilidad de aumento por clase:**
-
-| Clase | Probabilidad de aumento |
-|---|---|
-| Plastic | 0.00% |
-| Metal | 0.00% |
-| Paper | 10.76% |
-| Miscellaneous Trash | 11.03% |
-| Cardboard | 12.86% |
-| Vegetation | 14.20% |
-| Glass | 15.06% |
-| Food Organics | 15.55% |
-| Textile Trash | 20.55% |
+Existe un **desbalance de clases moderado**: Plastic y Metal superan las 700 imágenes, mientras que Textile Trash es la clase con menor representación. Se ilustro como se puede aplicar *data augmentation* dirigido para llevar las clases deficitarias a ~700 imágenes.
 
 ## Variables individuales
 
-El dataset de imágenes contiene dos metavariables tabulares:
+El dataset de imágenes contiene dos variables tabulares:
 
 | Variable | Tipo | Descripción |
 |---|---|---|
@@ -90,6 +77,5 @@ Las imágenes en sí son tensores de forma `(524, 524, 3)` (originales) o `(299,
 Al tratarse de un problema de **clasificación de imágenes**, la relación entre el input (píxeles) y la variable objetivo (`label`) se establece a través de la red neuronal convolucional. A nivel exploratorio:
 
 - Cada clase presenta patrones visuales distintivos (textura, color, forma), aunque con considerable variabilidad intra-clase.
-- La superposición visual entre algunas clases (p. ej., Paper vs. Cardboard, o Plastic vs. Miscellaneous Trash) anticipa que el modelo requerirá representaciones de alto nivel para discriminarlas.
-- El desbalance de clases fue mitigado mediante *data augmentation* para evitar sesgos del modelo hacia las clases mayoritarias (Plastic y Metal).
+- El desbalance de clases se puede mitigar mediante *data augmentation* para evitar sesgos del modelo hacia las clases mayoritarias (Plastic y Metal).
 - No se aplicó análisis de correlación clásica, ya que las variables de entrada son imágenes y no variables numéricas estructuradas.

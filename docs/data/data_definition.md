@@ -58,12 +58,11 @@ A partir de las carpetas por clase se construye un DataFrame con columnas `image
 - **Procedimientos de transformación y limpieza:**
   - Verificación de integridad: archivos ilegibles, imágenes vacías o constantes.
   - Rebalanceo de clases minoritarias (< 700 imágenes) mediante *data augmentation* con transformaciones aleatorias (brillo, contraste, rotación, traslación, zoom, flip, ruido gaussiano, entre otras).
-  - Las imágenes aumentadas se identifican con el prefijo `aug_<n>_` en su nombre y se integran al DataFrame `df_augmented`.
-  - **Redimensionamiento**: la totalidad del dataset aumentado (`df_augmented`) se redimensiona de 524×524 a **299×299 píxeles** (3 canales RGB) utilizando interpolación Lanczos. Las imágenes resultantes se almacenan en `realwaste_299/` conservando la estructura de carpetas por clase, y el DataFrame correspondiente es `df_resized`. Esta resolución es la requerida por la arquitectura **InceptionV3**.
+  - **Redimensionamiento**: la totalidad del dataset (`df`) se redimensiona de 524×524 a **299×299 píxeles** (3 canales RGB) utilizando interpolación Lanczos. Las imágenes resultantes se almacenan en `realwaste_mod/` conservando la estructura de carpetas por clase, y el DataFrame correspondiente es `df_resized`. Esta resolución es la requerida por la arquitectura **InceptionV3**.
 
 ### Base de datos de destino
 
-El proyecto no emplea una base de datos relacional como destino. Los datos procesados se mantienen en memoria (DataFrames de pandas `df_augmented` y `df_resized`) durante la ejecución del pipeline.
+El proyecto no emplea una base de datos relacional como destino. Los datos procesados se mantienen en memoria (DataFrame de pandas  `df_resized`) durante la ejecución del pipeline.
 
 - Las imágenes originales y aumentadas permanecen en `realwaste/` (gestionado por `dvc`).
-- Las imágenes redimensionadas a 299×299 se almacenan en `realwaste_299/`, listas para ser consumidas por el pipeline de entrenamiento con **InceptionV3**.
+- Las imágenes redimensionadas a 299×299 se almacenan en `realwaste_mod/`, listas para ser consumidas por el pipeline de entrenamiento con **InceptionV3**.
