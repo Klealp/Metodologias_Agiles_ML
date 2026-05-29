@@ -22,7 +22,7 @@ El criterio de éxito definido en el *Project Charter* establece una **accuracy 
 
 ## Descripción del Modelo
 
-Se siguió un enfoque progresivo de tres etapas para el desarrollo y comparación de modelos:
+Se siguió un enfoque progresivo de tres etapas para el desarrollo y comparación de modelos, los cuales realizan la extracción de características de forma interna, puesto que se utilizan capas de redes convolucionales para procesar las imágenes. Esto al considerar que el proyecto se basa en un problema de clasificación de imágenes, donde las características relevantes para la tarea (texturas, formas, patrones visuales) deben ser aprendidas automáticamente por la red a través de sus capas convolucionales, sin necesidad de ingeniería manual de características.
 
 ### Etapa 1 — Modelo Baseline (CNN desde cero)
 

@@ -127,6 +127,8 @@ Se emplearon las siguientes métricas sobre el **conjunto de prueba (713 imágen
 
 El modelo baseline CNN alcanza una accuracy de **64.66 %** en el conjunto de prueba, lo que representa una línea base funcional pero claramente mejorable.
 
+La comparación exhaustiva del modelo de línea base contra modelos más avanzados (Transfer Learning y Fine-Tuning) se realiza en el reporte `model_report.md`, donde se evidencia una mejora significativa al aprovechar arquitecturas preentrenadas como InceptionV3.
+
 ## Referencias
 
 - Single, S., Iranmanesh, S., & Raad, R. (2023). RealWaste: A Novel Real-Life Data Set for Landfill Waste Classification Using Deep Learning. Algorithms, 16(6), 299. https://doi.org/10.3390/info14120633
