@@ -3,6 +3,7 @@
   margin: 40px auto;
   text-align: center;
   font-family: system-ui, sans-serif;
+  padding: 0 16px;
 }
 
 h1 {
@@ -22,14 +23,9 @@ h1 {
   height: 250px;
   border: 2px dashed #ccc;
   border-radius: 12px;
-  cursor: pointer;
   margin-bottom: 16px;
   overflow: hidden;
   color: #888;
-}
-
-.upload-area input {
-  display: none;
 }
 
 .preview {
@@ -38,17 +34,35 @@ h1 {
   object-fit: contain;
 }
 
-button {
-  padding: 10px 32px;
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.actions input {
+  display: none;
+}
+
+.btn {
+  padding: 10px 20px;
   font-size: 16px;
   border: none;
   border-radius: 8px;
-  background: #4f46e5;
-  color: white;
   cursor: pointer;
 }
 
-button:disabled {
+.btn-secondary {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.btn-primary {
+  background: #4f46e5;
+  color: white;
+}
+
+.btn-primary:disabled {
   background: #aaa;
   cursor: not-allowed;
 }

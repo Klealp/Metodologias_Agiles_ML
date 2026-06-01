@@ -44,18 +44,27 @@ function App() {
       <h1>Clasificador de Residuos</h1>
       <p className="subtitle">RealWaste - InceptionV3</p>
 
-      <label className="upload-area">
+      <div className="upload-area">
         {preview ? (
           <img src={preview} alt="Preview" className="preview" />
         ) : (
-          <span>Haz clic o arrastra una imagen</span>
+          <span>Selecciona o toma una foto</span>
         )}
-        <input type="file" accept="image/*" onChange={handleFileChange} />
-      </label>
+      </div>
 
-      <button onClick={handleSubmit} disabled={!file || loading}>
-        {loading ? 'Clasificando...' : 'Clasificar'}
-      </button>
+      <div className="actions">
+        <label className="btn btn-secondary">
+          Galeria
+          <input type="file" accept="image/*" onChange={handleFileChange} />
+        </label>
+        <label className="btn btn-secondary">
+          Camara
+          <input type="file" accept="image/*" capture="environment" onChange={handleFileChange} />
+        </label>
+        <button className="btn btn-primary" onClick={handleSubmit} disabled={!file || loading}>
+          {loading ? 'Clasificando...' : 'Clasificar'}
+        </button>
+      </div>
 
       {error && <p className="error">{error}</p>}
 
