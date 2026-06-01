@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: src/predict/Dockerfile
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: src/load/Dockerfile
+      args:
+        VITE_URL_EP: ${VITE_URL_EP}
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
