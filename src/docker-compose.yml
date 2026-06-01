@@ -5,7 +5,7 @@ services:
       context: ..
       dockerfile: src/predict/Dockerfile
     ports:
-      - "8000:8000"
+      - "7001:8000"
 
   frontend:
     build:
@@ -14,7 +14,7 @@ services:
       args:
         VITE_URL_EP: ${VITE_URL_EP}
     ports:
-      - "3000:80"
+      - "7000:80"
     depends_on:
       - api
 
