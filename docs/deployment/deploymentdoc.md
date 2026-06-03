@@ -3,7 +3,9 @@
 ## Infraestructura
 
 - **Nombre del modelo:** RealWaste Classifier (`model_prd_colab.keras`)
+
 - **Plataforma de despliegue:** Máquina on premise GMKTEC con 96 GB de RAM y 2 TB de almacenamiento. El acceso remoto se realiza mediante VPN de Cloudflare con autenticación OAuth 2.0; el acceso local se realiza directamente desde la red interna.
+
 - **Requisitos técnicos:**
   - Docker Engine (versión 24 o superior) con soporte para Docker Compose v2
   - Python 3.11 (incluido en la imagen base del contenedor de la API)
@@ -12,6 +14,8 @@
   - FastAPI 0.115.0, Uvicorn 0.30.0, python-multipart 0.0.9 (dependencias de la API)
   - Node.js 22 + Nginx Alpine (usados durante la construcción del contenedor del frontend)
   - Archivo del modelo en formato `.keras` ubicado en `scripts/evaluation/`
+  - Disponibilidad de los puertos locales **7000** y **7001**
+
 - **Requisitos de seguridad:**
   - Acceso remoto protegido mediante VPN de Cloudflare con autenticación OAuth 2.0
   - El túnel de Cloudflare (`cloudflared`) es el único punto de entrada público; el servidor no expone puertos directamente a Internet

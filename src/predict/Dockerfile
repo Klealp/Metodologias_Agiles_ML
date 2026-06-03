@@ -1,9 +1,10 @@
-FROM tensorflow/tensorflow:2.19.0
+FROM python:3.11-slim
+#tensorflow/tensorflow:2.19.0
 
 WORKDIR /app
 
 COPY src/predict/requirements.txt .
-RUN pip install --no-cache-dir --upgrade keras
+#RUN pip install --no-cache-dir --upgrade keras
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY scripts/evaluation/model_prd_colab.keras /app/model/model_prd_colab.keras
