@@ -52,7 +52,7 @@ El *modelado* aplicará **Transfer Learning** mediante fine-tuning de **Inceptio
 | Científico de Datos (Sergio Sierra) | EDA, evaluación del modelo y documentación técnica. | $4,000 | 1.5 meses a tiempo parcial |
 | **II. Infraestructura y Software** | | | |
 | Plataforma Cloud (GPU) | Google Colab Pro para entrenamiento del modelo. | $800 | ~100 horas de GPU |
-| Almacenamiento Cloud | NAS para el dataset y checkpoints del modelo. | $1000 | ~50 GB por 1.5 meses |
+| Almacenamiento Cloud | NAS para el dataset, checkpoints del modelo y hosting de la interfaz. | $1000 | ~50 GB por 1.5 meses |
 | Licencias de Software | Python, TensorFlow/Keras, scikit-learn (open-source). | $0 | Sin costo de licencias. |
 | **III. Misceláneos** | | | |
 | Investigación y Desarrollo | Lectura del artículo de referencia y pruebas de concepto del fine-tuning. | $500 | Exploración de la arquitectura InceptionV3. |
