@@ -159,3 +159,9 @@ Para reportar errores, solicitar actualizaciones del modelo o realizar cualquier
 **klealp@unal.edu.co**
 
 El responsable del sistema realizará las revisiones y los ajustes correspondientes.
+
+### Futuras implementaciones
+
+Para futuras implementaciones se recomienda migrar a una nube pública como AWS. Esta arquitectura permitiría incorporar grupos de autoescalado (ASG) combinados con balanceadores de carga (ELB) para gestionar picos de demanda en la inferencia del modelo. Dado que el sistema no persiste las imágenes procesadas, no se requiere base de datos, lo que simplifica la arquitectura y reduce costos. Adicionalmente, se recomienda incorporar AWS WAF para mitigar ataques de denegación de servicio (DoS) y filtrar solicitudes maliciosas que puedan generar costos computacionales no deseados.
+
+![Descripción](ArquitecturaCVAI.png)
