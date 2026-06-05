@@ -38,6 +38,9 @@
   Modelo Keras (model_prd_colab.keras)
   ```
 
+![Descripción](DiagramaActual.png)
+
+
   Para uso local (sin túnel), el usuario accede directamente a `http://localhost:7000/`. El diagrama de la respuesta del servidor con la predicción realizada es completamente análogo, pero sin la capa de Cloudflare.
 
 ---
