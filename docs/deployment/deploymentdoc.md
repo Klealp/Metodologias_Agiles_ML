@@ -105,7 +105,7 @@ docker compose -f src/docker-compose-online.yml up --build -d
 
 #### 4. Acceder a la documentación de la API (opcional)
 - En local: [http://localhost:7001/docs](http://localhost:7001/docs)
-- En línea: [https://realwaste.sierrainnovate.com/api/docs](https://realwaste.sierrainnovate.com/api/docs)
+- En línea: [https://eprealwaste.sierrainnovate.com/docs](https://eprealwaste.sierrainnovate.com/docs)
 
 ---
 

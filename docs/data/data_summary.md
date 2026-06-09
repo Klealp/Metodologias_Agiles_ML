@@ -5,7 +5,7 @@ Este documento contiene los resultados del análisis exploratorio de datos del d
 ## Resumen general de los datos
 
 | Característica | Valor |
-|---|---|+
+|---|---|
 | Total de imágenes | 4 752 |
 | Número de clases | 9 |
 | Formato de imágenes | JPEG (`.jpg`) |
